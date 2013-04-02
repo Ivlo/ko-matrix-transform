@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-family: Helvetica, Arial, sans-serif; }
+
+[role=main] {
+  max-width: 960px;
+  margin: 0 auto; }
+
+.clearfix:after, .example:after, .clearfix:before, .example:before {
+  content: "";
+  display: table; }
+.clearfix:after, .example:after {
+  clear: both; }
+
+.transformable, .translate, .rotate, .rotate-r, .scale {
+  -webkit-transform-origin: 25px 25px;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear; }
+
+.example {
+  padding: 10px;
+  border: 1px solid black;
+  margin: 10px 0; }
+  .example .rectangle + .rectangle {
+    margin-top: 15px; }
+
+.example h1 {
+  position: absolute; }
+
+.rectangle {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  margin: 0 auto; }
+
+@-webkit-keyframes translate {
+  0% {
+    -webkit-transform: matrix(1, 0, 0, 1, -65, -65); }
+
+  25% {
+    -webkit-transform: matrix(1, 0, 0, 1, -65, 0); }
+
+  75% {
+    -webkit-transform: matrix(1, 0, 0, 1, 65, 0); }
+
+  100% {
+    -webkit-transform: matrix(1, 0, 0, 1, 65, -65); } }
+
+.translate {
+  -webkit-animation-name: translate; }
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: matrix(1, 0, 0, 1, 0, 0); }
+
+  50% {
+    -webkit-transform: matrix(-1, 0, 0, -1, 0, 0); }
+
+  75% {
+    -webkit-transform: matrix(0, 1, -1, 0, 0, 0); }
+
+  100% {
+    -webkit-transform: matrix(1.0, -0.017, 0.017, 1.0, 0, 0); } }
+
+.rotate {
+  -webkit-animation-name: rotate;
+  opacity: 0.5; }
+
+@-webkit-keyframes rotate-r {
+  0% {
+    -webkit-transform: rotate(0deg); }
+
+  100% {
+    -webkit-transform: rotate(-360deg); } }
+
+.rotate-r {
+  -webkit-animation-name: rotate-r;
+  opacity: 0.5;
+  margin-top: -50px !important;
+  position: relative; }
+
+@-webkit-keyframes scale {
+  0% {
+    -webkit-transform: matrix(1, 0, 0, 1, 0, 0); }
+
+  100% {
+    -webkit-transform: matrix(4, 0, 0, 0.5, 0, 0); } }
+
+.scale {
+  -webkit-animation-name: scale; }
+
+.controls {
+  padding: 20px; }
+  .controls .field {
+    text-align: center; }
+
+.transformable, .translate, .rotate, .rotate-r, .scale {
+  -webkit-transition: -webkit-transform .5s ease; }

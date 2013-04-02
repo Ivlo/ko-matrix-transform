@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>You are in the matrix!</title>
+    <link rel="stylesheet" href="styles/styles.css">
+  </head>
+  <body>
+    
+    <section role="main">
+      <article class="example">
+        <h1>Translate</h1>
+        <div class="rectangle">
+          
+        </div>
+        <div class="rectangle translate">
+          
+        </div>
+      </article>
+      <article class="example">
+        <h1>Rotate</h1>
+        <div class="rectangle">
+          
+        </div>
+        <div class="rectangle rotate">
+          <img src="js/holder.js/50x50/#fff800:#ff0000" alt="">
+        </div>
+        <div class="rectangle rotate-r">
+          <img src="js/holder.js/50x50/#ff0000:#0000ff" alt="">
+        </div>
+      </article>
+      <article class="example">
+        <h1>Scale</h1>
+        <div class="rectangle">
+          
+        </div>
+        <div class="rectangle scale">
+          <img src="js/holder.js/50x50/#5cbc95:#499677" alt="">
+        </div>
+      </article>
+
+      <!-- <div style="height:200px"></div> -->
+      <div class="rectangle transformable"><img src="js/holder.js/50x50/#5cbc95:#499677" alt=""></div>
+      <form class="controls">
+        <div class="field">
+          <label for="translate_x">X:</label>
+          <input id="translate_x" value="0"
+                  type="number"
+                  data-bind="value: translate_x">
+          <label for="translate_y">Y:</label>
+          <input id="translate_y" value="0"
+                  type="number"
+                  data-bind="value: translate_y">
+          <button data-bind="click: on_translate">Move</button>
+        </div>
+        <div class="field">
+          <label for="rotation">Rotation:</label>
+          <input id="rotation" value="0"
+                  type="number"
+                  data-bind="value: rotation">
+          <button data-bind="click: on_rotate">Rotate</button>
+        </div>
+      </form>
+
+    </section>
+    
+  <script src="js/holder.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/sylvester.js"></script>
+  <script src="js/knockout.js"></script>
+  <script src="js/transformable.js"></script>
+
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+  </body>
+</html>

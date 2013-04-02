@@ -1,0 +1,159 @@
+*{
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Helvetica, Arial, sans-serif;
+}
+
+[role=main]{
+  max-width:960px;
+  margin:0 auto;
+}
+
+.clearfix{
+  &:after, &:before{
+    content:"";
+    display:table;
+  }
+  &:after{
+    clear:both;
+  }
+}
+
+// CSS Examples
+
+.transformable{
+  -webkit-transform-origin: 25px 25px;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+
+@mixin transformable($name){
+  @extend .transformable;
+  -webkit-animation-name:$name;
+}
+
+.example{
+  padding:10px;
+  border:1px solid black;
+  @extend .clearfix;
+  margin:10px 0;
+  .rectangle + .rectangle{
+    margin-top:15px;
+  }
+}
+
+.example h1{
+  position:absolute;
+
+}
+
+.rectangle{
+  width:50px;
+  height:50px;
+  background-color: red;
+  margin:0 auto;
+}
+
+@-webkit-keyframes translate {
+  0% { 
+
+    // Translate
+    // 1  0  -65
+    // 0  1  -65
+    // 0  0   0
+    
+    -webkit-transform:  matrix(1, 0, 0, 1, -65, -65);
+  }
+  25% {
+    -webkit-transform:  matrix(1, 0, 0, 1, -65, 0);
+  }
+  75% {
+    -webkit-transform:  matrix(1, 0, 0, 1, 65, 0);
+  }
+  100% { 
+    -webkit-transform:  matrix(1, 0, 0, 1, 65, -65);
+  }
+}
+
+.translate{
+  @include transformable(translate);
+}
+
+@mixin rmatrix($cos, $sin, $x:0, $y:0){
+  // Rotate
+  // cosθ −sinθ 0
+  // sinθ  cosθ 0
+  //  0     0   1
+  -webkit-transform:  matrix($cos, $sin, -$sin, $cos, $x, $y);
+}
+
+@-webkit-keyframes rotate {
+  0% { 
+    @include rmatrix(1,0);
+  }
+  50% { 
+    @include rmatrix(-1,0);
+  }
+  75% { 
+    @include rmatrix(0,1);
+  }
+  100%{
+   @include rmatrix(0.9998476951563913, -0.01745240643728445); 
+  }
+}
+
+.rotate{
+  @include transformable(rotate);
+  opacity: 0.5;
+}
+
+@-webkit-keyframes rotate-r {
+  0% { 
+    -webkit-transform: rotate(0deg);
+  }
+  100%{
+   -webkit-transform: rotate(-360deg);
+  }
+}
+
+.rotate-r{
+  @include transformable(rotate-r);
+  opacity: 0.5;
+  margin-top:-50px!important;
+  position:relative;
+}
+
+@-webkit-keyframes scale {
+  0% { 
+    -webkit-transform:  matrix(1, 0, 0, 1, 0, 0);
+  }
+  100% {
+    // scale
+    // 4  0  0
+    // 0 .5  0
+    // 0  0  1 
+    -webkit-transform:  matrix(4, 0, 0, .5, 0, 0);
+  }
+}
+
+.scale{
+  @include transformable(scale);
+}
+
+// JS Example
+
+.controls{
+  padding:20px;
+  .field{
+    text-align:center;
+  }
+}
+
+.transformable{
+  -webkit-transition: -webkit-transform .5s ease;
+}
